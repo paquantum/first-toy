@@ -20,6 +20,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./Documents/Workspace/first-toy
 
     steps:
     - uses: actions/checkout@v3
@@ -28,10 +30,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Grant excute permission for gradlew
+      run: chmod +x gradlew
+      working-directory: ${{ env.working-directory }}
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      with:
-        arguments: build
+      run: ./gradlew build
+      working-directory: ${{ env.working-directory }}
         
   deploy:
     runs-on: ubuntu-latest
@@ -51,5 +55,4 @@ jobs:
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy
             git pull || exit 1
-            ./gradlew build || exit 1
           "
