@@ -20,8 +20,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./Documents/Workspace/first-toy
 
     steps:
     - uses: actions/checkout@v3
@@ -32,10 +30,8 @@ jobs:
         distribution: 'temurin'
     - name: Grant excute permission for gradlew
       run: chmod +x gradlew
-      working-directory: ${{ env.working-directory }}
     - name: Build with Gradle
       run: ./gradlew build
-      working-directory: ${{ env.working-directory }}
         
   deploy:
     runs-on: ubuntu-latest
