@@ -23,7 +23,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
@@ -50,6 +50,6 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy/
-            git pull origin main
+            git pull origin main || exit 1
             ./scripts/deploy.sh
           "
