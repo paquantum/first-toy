@@ -3,5 +3,4 @@
 git pull origin main
 ./gradlew build
 
-cd build/libs
-nohup java -jar toy-0.0.1-SNAPSHOT.jar &
+nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar &
