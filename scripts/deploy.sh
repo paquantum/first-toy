@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd Documents/workspace/first-toy/
 git pull origin main
 ./gradlew build
 
