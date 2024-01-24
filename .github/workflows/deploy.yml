@@ -49,5 +49,7 @@ jobs:
       - name: SSH and deploy
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
-            ./Documents/workspace/first-toy/scripts/deploy.sh
+            cd Documents/workspace/first-toy/scripts
+            chmod + x deploy.sh
+            ./deploy.sh
           "
