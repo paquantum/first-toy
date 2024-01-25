@@ -52,6 +52,5 @@ jobs:
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
             pwd
-            cd scripts/
-            ./deploy.sh
+            ./scripts/deploy.sh
           "
