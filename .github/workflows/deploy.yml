@@ -62,6 +62,5 @@ jobs:
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
-            cd build/libs/
-            nohup java -jar toy-0.0.1-SNAPSHOT.jar &
+            nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar &
           "
