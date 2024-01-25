@@ -33,7 +33,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: proj
         path: build/libs
@@ -43,7 +43,7 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@3
+        uses: actions/download-artifact@2
         with:
           name: proj
       - name: Set up SSH
@@ -64,4 +64,5 @@ jobs:
             git pull origin main || exit 1
             pwd
             ./scripts/deploy.sh
+            ls build/libs/
           "
