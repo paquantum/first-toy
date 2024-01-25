@@ -1,4 +1,4 @@
 #!/bin/bash
 
 pwd
-./gradlew build
+echo testecho
