@@ -63,5 +63,6 @@ jobs:
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
             pwd
+            brew install openjdk@17
             java -version
           "
