@@ -63,5 +63,7 @@ jobs:
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
             pwd
+            sudo apt update
+            sudo apt install openjdk-17-jdk
             java -version
           "
