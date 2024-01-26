@@ -39,7 +39,7 @@ jobs:
         path: build/libs
         
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build
     steps:          
       - name: Download artifact
