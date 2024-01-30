@@ -52,5 +52,7 @@ jobs:
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
             pwd
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            source ~/.zshrc
             ./gradlew build || exit 1
           "
