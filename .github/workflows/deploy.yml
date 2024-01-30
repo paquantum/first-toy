@@ -32,20 +32,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: proj
-        path: build/libs
         
   deploy:
     runs-on: macos-latest
     needs: build
-    steps:          
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: proj
+    steps:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh/
@@ -55,14 +46,11 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-      - name: SCP transfer
-        run: scp *.jar ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }}:~/Documents/workspace/first-toy/build/libs
-
       - name: SSH and deploy
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
             pwd
-            ./scripts/deploy.sh
+            ./gradlew build || exit 1
           "
