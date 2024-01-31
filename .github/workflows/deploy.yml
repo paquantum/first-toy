@@ -51,6 +51,5 @@ jobs:
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
-            source ~/.zshrc
             ./scripts/deploy.sh
           "
