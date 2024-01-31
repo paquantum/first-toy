@@ -51,7 +51,6 @@ jobs:
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
             cd Documents/workspace/first-toy/
             git pull origin main || exit 1
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             source ~/.zshrc
             pwd
             ./scripts/deploy.sh
