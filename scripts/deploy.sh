@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#source ~/.zshrc
+source ~/.zshrc
 
 ./gradlew build || exit 1
 
@@ -15,4 +15,4 @@ fi
 echo "my-application Restart!"
 echo $1
 
-nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar &
+nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
