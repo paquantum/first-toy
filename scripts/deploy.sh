@@ -1,9 +1,19 @@
 #!/bin/bash
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-source ~/.zshrc
-CURRENT_PID=$(pgrep -f toy-0.0.1-SNAPSHOT.jar)
-sudo kill -9 $CURRENT_PID
-./gradlew build
-nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar &
-exit
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#source ~/.zshrc
+
+./gradlew build || exit 1
+
+ps -ef | grep "toy-0.0.1-SNAPSHOT.jar" | grep -v grep | awk '{print $2}' | xargs kill -9 2> /dev/null
+
+if [ $? -eq 0 ];then
+    echo "my-application Stop Success"
+else
+    echo "my-application Not Running"
+fi
+
+echo "my-application Restart!"
+echo $1
+
+nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
