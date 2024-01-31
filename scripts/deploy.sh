@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #source ~/.zshrc
 
 ./gradlew build || exit 1
@@ -16,4 +15,4 @@ fi
 echo "my-application Restart!"
 echo $1
 
-nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+nohup java -jar build/libs/toy-0.0.1-SNAPSHOT.jar
