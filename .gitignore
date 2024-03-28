@@ -39,3 +39,4 @@ out/
 .DS_Store
 nohup.out
 nohup.err
+Dockerfile
